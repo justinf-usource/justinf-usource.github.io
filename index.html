@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav class="desktop-nav">
+            <ul class="nav-bar">
+                <li class="nav-item-active">My Profile</li>
+                <a href="pages/education.html">
+                    <li>education</li>
+                </a>
+                <a href="pages/experience.html">
+                    <li>experience</li>
+                </a>
+                <a href="pages/work.html">
+                    <li>works</li>
+                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                </svg>
+            </ul>
+        </nav>
+
+        <nav class="mobile-nav" id="">
+            <button id="burgerBtn" aria-label="Open Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+                    viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5" />
+                </svg>
+            </button>
+
+        </nav>
+        <div class="mobile-menu" id="mobileMenu">
+            <button class="close-btn" id="closeBtn" aria-label="Close Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                </svg>
+            </button>
+            <ul class="mobile-menu-item">
+                <li class="nav-item-active">My Profile</li>
+                <a href="pages/education.html">
+                    <li>education</li>
+                </a>
+                <a href="pages/experience.html">
+                    <li>experience</li>
+                </a>
+                <a href="pages/work.html">
+                    <li>works</li>
+                </a>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                </svg>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero-banner fade-in">
+        <div class="container">
+            <div class="left-container">
+                <h1 class="typing">Hi, I'm Justin</h1>
+                <p>During these <strong>4 years</strong> as <strong>Front-End Software Engineer</strong>.
+                    My role has extended beyond coding to effective
+                    communication with various departments, to define new
+                    features and spearheading the development of new apps.
+                </p>
+                <a href="assets/Justin Louise Ferdes Resume.pdf" download>
+                    <button class="">Download CV</button>
+                </a>
+            </div>
+            <div class="right-container">
+                <img src="assets/Images/hero-image.jpg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="specialization fade-in">
+        <div class="container">
+            <div class="left-container">
+                <h2>My Specializations</h2>
+                <p>A collection of technologies and platforms <br> I’ve mastered to deliver high-quality digital
+                    solutions.</p>
+            </div>
+
+            <div class="scroll-component">
+                <div class="scroll-content">
+                    <div class="spec-box">
+                        <img src="assets/Images/figma.svg" alt="">
+                        <p>Figma</p>
+                    </div>
+                    <div class="spec-box">
+                        <img src="assets/Images/Wordpress.png" alt="">
+                        <p>Wordpress</p>
+                    </div>
+                    <div class="spec-box">
+                        <img src="assets/Images/shopify.webp" alt="">
+                        <p>Shopify</p>
+                    </div>
+                    <div class="spec-box">
+                        <img src="assets/Images/Js.png" alt="">
+                        <p>Javascript</p>
+                    </div>
+                    <div class="spec-box">
+                        <div>
+                            <img src="assets/Images/html.png" alt="">
+                            <img src="assets/Images/css.png" alt="">
+                        </div>
+                        <p>HMLL & CSS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="tools fade-in">
+        <div class="container">
+            <h2>Tools I Work With</h2>
+            <div class="tools-container">
+                <div class="tools-box">
+                    <div class="tools-list">
+                        <p>Front-end</p>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/react.png" alt="">
+                            <p>ReactJS</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/figma.png" alt="">
+                            <p>Figma</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/html.png" alt="">
+                            <p>HTML</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/css.png" alt="">
+                            <p>CSS</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/bootstrap.png" alt="">
+                            <p>Bootstrap</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tools-box">
+                    <div class="tools-list">
+                        <p>Back-end</p>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/JS.png" alt="">
+                            <p>Javascript</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/TS.png" alt="">
+                            <p>Typescript</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/PHP.png" alt="">
+                            <p>PHP</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/SQL.png" alt="">
+                            <p>SQL</p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tools-box">
+                    <div class="tools-list">
+                        <p>Content Management System</p>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/Wordpress.png" alt="">
+                            <p>Wordpress</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/Shopify.png" alt="">
+                            <p>Shopify</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/Webflow.png" alt="">
+                            <p>Webflow</p>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="tools-box">
+                    <div class="tools-list">
+                        <p>Other Tools</p>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/github.png" alt="">
+                            <p>GitHub</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/postman.png" alt="">
+                            <p>Postman</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/google-firebase.png" alt="">
+                            <p>Google Firebase</p>
+                        </div>
+                        <div class="tools-item">
+                            <img src="assets/Images/Tools icon/insomnia.png" alt="">
+                            <p>Insomnia</p>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="form fade-in">
+        <div class="container">
+            <div class="heading">
+                <h2>Let's Work Together</h2>
+                <p>Interested in collaborating or have a project in mind? I’m currently open to new opportunities.</p>
+            </div>
+            <div class="form-container">
+                <form action="">
+
+                    <div class="form-input">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="" placeholder="Enter name">
+                    </div>
+
+                    <div class="form-input">
+                        <label for="name">Email</label>
+                        <input type="email" name="name" id="" placeholder="Enter email">
+                    </div>
+                    <div class="form-input">
+                        <label for="phone">Name</label>
+                        <input type="text" name="name" id="" placeholder="Enter phone number">
+                    </div>
+                    <div class="form-input">
+                        <label for="name">Name</label>
+                        <input type="textarea" name="name" id="" placeholder="Enter name">
+                    </div>
+                    <button>Contact me</button>
+                </form>
+            </div>
+
+
+        </div>
+
+    </section>
+    <footer>
+        <div class="container">
+            <div class="inner-footer-container">
+                <div>
+                    <p>Follow Me</p>
+                </div>
+                <div class="footer-socials">
+                    <ul>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-github" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
+                        </svg>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="js/header.js"></script>
+    <script src="js/horizontal-scroll.js"></script>
+    <script src="js/fade-in.js"></script>
+
+
+
+
+</body>
+
+
+</html>
