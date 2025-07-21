@@ -60,6 +60,11 @@
 const scrollComponent = document.querySelector('.scroll-component');
 const scrollContent = document.querySelector('.scroll-content');
 
+const contentWidth = scrollContent.scrollWidth;
+
+// Clone children for infinite loop
+scrollContent.innerHTML += scrollContent.innerHTML;
+
 let isDragging = false;
 let startX = 0;
 let currentX = 0;
@@ -68,13 +73,10 @@ let velocity = 0;
 
 const sensitivity = 1.5;
 const momentumDecay = 0.95;
-const autoScrollSpeed = 0.3; // Slower = smoother
+const autoScrollSpeed = 0.2;
 
 let translateX = 0;
-let contentWidth = scrollContent.scrollWidth;
-let animationID;
 
-// Start the loop
 requestAnimationFrame(autoScrollLoop);
 
 function autoScrollLoop() {
@@ -85,20 +87,20 @@ function autoScrollLoop() {
 
   scrollContent.style.transform = `translateX(${translateX}px)`;
 
-  animationID = requestAnimationFrame(autoScrollLoop);
+  requestAnimationFrame(autoScrollLoop);
 }
 
-// Wrap the position when content fully moves out of view
 function wrapPosition() {
   if (translateX <= -contentWidth) {
-    translateX = 0;
+    translateX += contentWidth;
   }
-  if (translateX > 0) {
-    translateX = -contentWidth;
+
+  if (translateX >= 0) {
+    translateX -= contentWidth;
   }
 }
 
-// Drag events
+// Dragging
 scrollComponent.addEventListener('mousedown', (e) => {
   isDragging = true;
   startX = e.pageX - translateX;
@@ -130,7 +132,7 @@ scrollComponent.addEventListener('mouseleave', () => {
   }
 });
 
-// Momentum glide after drag
+// Momentum
 let momentumID;
 function startMomentum() {
   momentumID = requestAnimationFrame(momentumLoop);
@@ -151,3 +153,4 @@ function momentumLoop() {
 function cancelMomentum() {
   cancelAnimationFrame(momentumID);
 }
+
