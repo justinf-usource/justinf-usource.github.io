@@ -58,91 +58,96 @@
 // }
 
 const scrollComponent = document.querySelector('.scroll-component');
+const scrollContent = document.querySelector('.scroll-content');
+
 let isDragging = false;
-let startX;
-let scrollLeft;
+let startX = 0;
+let currentX = 0;
+let lastX = 0;
 let velocity = 0;
-let lastX;
-let momentumID;
 
 const sensitivity = 1.5;
 const momentumDecay = 0.95;
+const autoScrollSpeed = 0.3; // Slower = smoother
 
-// Auto-scroll
-let autoScrollID;
-const autoScrollSpeed = 0.5; // Adjust this for speed
+let translateX = 0;
+let contentWidth = scrollContent.scrollWidth;
+let animationID;
 
-function startAutoScroll() {
-  autoScrollID = requestAnimationFrame(autoScrollLoop);
-}
+// Start the loop
+requestAnimationFrame(autoScrollLoop);
 
 function autoScrollLoop() {
-  scrollComponent.scrollLeft += autoScrollSpeed;
-
-  // Loop back to start if at the end
-  if (scrollComponent.scrollLeft + scrollComponent.clientWidth >= scrollComponent.scrollWidth) {
-    scrollComponent.scrollLeft = 0;
+  if (!isDragging) {
+    translateX -= autoScrollSpeed;
+    wrapPosition();
   }
 
-  autoScrollID = requestAnimationFrame(autoScrollLoop);
+  scrollContent.style.transform = `translateX(${translateX}px)`;
+
+  animationID = requestAnimationFrame(autoScrollLoop);
 }
 
-function stopAutoScroll() {
-  cancelAnimationFrame(autoScrollID);
+// Wrap the position when content fully moves out of view
+function wrapPosition() {
+  if (translateX <= -contentWidth) {
+    translateX = 0;
+  }
+  if (translateX > 0) {
+    translateX = -contentWidth;
+  }
 }
 
-// Start auto-scroll initially
-startAutoScroll();
-
-// Manual dragging
+// Drag events
 scrollComponent.addEventListener('mousedown', (e) => {
   isDragging = true;
-  scrollComponent.classList.add('dragging');
-  startX = e.pageX - scrollComponent.offsetLeft;
-  scrollLeft = scrollComponent.scrollLeft;
-  lastX = e.pageX;
-
-  stopAutoScroll(); // Stop auto-scroll while dragging
-  cancelMomentumScroll();
+  startX = e.pageX - translateX;
+  cancelMomentum();
 });
-
-scrollComponent.addEventListener('mouseleave', stopDragging);
-scrollComponent.addEventListener('mouseup', stopDragging);
-
-function stopDragging(e) {
-  if (!isDragging) return;
-  isDragging = false;
-  scrollComponent.classList.remove('dragging');
-  startMomentumScroll();
-}
 
 scrollComponent.addEventListener('mousemove', (e) => {
   if (!isDragging) return;
-  e.preventDefault();
-  const x = e.pageX - scrollComponent.offsetLeft;
-  const walk = (x - startX) * sensitivity;
-  scrollComponent.scrollLeft = scrollLeft - walk;
 
-  velocity = e.pageX - lastX;
-  lastX = e.pageX;
+  e.preventDefault();
+  currentX = e.pageX;
+  translateX = e.pageX - startX;
+
+  wrapPosition();
+
+  velocity = currentX - lastX;
+  lastX = currentX;
 });
 
-function startMomentumScroll() {
-  cancelMomentumScroll();
+scrollComponent.addEventListener('mouseup', () => {
+  isDragging = false;
+  startMomentum();
+});
+
+scrollComponent.addEventListener('mouseleave', () => {
+  if (isDragging) {
+    isDragging = false;
+    startMomentum();
+  }
+});
+
+// Momentum glide after drag
+let momentumID;
+function startMomentum() {
   momentumID = requestAnimationFrame(momentumLoop);
 }
 
-function cancelMomentumScroll() {
-  cancelAnimationFrame(momentumID);
+function momentumLoop() {
+  if (Math.abs(velocity) > 0.5) {
+    translateX += velocity * sensitivity;
+    wrapPosition();
+
+    scrollContent.style.transform = `translateX(${translateX}px)`;
+
+    velocity *= momentumDecay;
+    momentumID = requestAnimationFrame(momentumLoop);
+  }
 }
 
-function momentumLoop() {
-  scrollComponent.scrollLeft -= velocity * sensitivity;
-  velocity *= momentumDecay;
-
-  if (Math.abs(velocity) > 0.5) {
-    momentumID = requestAnimationFrame(momentumLoop);
-  } else {
-    startAutoScroll(); // Resume auto-scroll after momentum stops
-  }
+function cancelMomentum() {
+  cancelAnimationFrame(momentumID);
 }
